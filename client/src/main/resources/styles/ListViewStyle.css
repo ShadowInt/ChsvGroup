@@ -1,0 +1,118 @@
+#scrollPane{
+    -fx-background-color: -fx-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0;
+}
+
+#recordBtn{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 0px, 0px, 0px, 0px;
+    -fx-background-insets: 0;
+}
+
+#chatPane{
+    -fx-border-width: 0;
+}
+
+#buttonSend{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 0px, 0px, 0px, 0px;
+    -fx-background-insets: 0;
+    -fx-text-fill: #000000;
+}
+
+.button:focused {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0;
+    -fx-color: #ffffff;
+    -fx-background-radius: 0px, 0px, 0px, 0px;
+}
+
+.list-view:focused, .scroll-pane:focused {
+    -fx-background-color: -fx-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0;
+}
+
+.text-area {
+    -fx-background-insets: 0;
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.text-area .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.text-area:focused .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.text-area:focused {
+    -fx-highlight-fill: #7ecfff;
+}
+
+.text-area .content {
+    -fx-padding: 10px;
+    -fx-text-fill: gray;
+    -fx-highlight-fill: #7ecfff;
+}
+
+#onlineUsersHbox {
+    -fx-border-width: 0px;
+}
+
+.list-cell {
+    -fx-cell-size: 40px;
+    -fx-animated: true;
+    -fx-padding: 1px;
+    -fx-background-color: #ffffff;
+    -fx-border-width: 0;
+    -fx-text-fill: #000;
+    -fx-text-color: #000;
+}
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-text-fill: #000;
+    -fx-text-color: #000;
+}
+
+.list-cell:hover, .list-cell:focus, .list-cell:focused, .list-cell:pressed {
+    -fx-text-fill: #000;
+    -fx-text-color: #000;
+    -fx-border-width: 0;
+}
+
+.list-view {
+    -fx-border-image-width: 0;
+    -fx-background-color: -fx-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0;
+    -fx-font-size: 14px;
+    -fx-text-fill: #000;
+}
+
+.list-view:hover, .list-view:focus, .list-view:focused {
+    -fx-text-fill: #000;
+    -fx-text-color: #000;
+    -fx-border-width: 0;
+}
+
+#statusList {
+    -fx-box-border: transparent;
+}
+
+#userList {
+    -fx-box-border: transparent;
+}
+
+#listHbox {
+    -fx-background-color: #ffffff;
+    -fx-padding: 0.2;
+    -fx-spacing: -2;
+    -fx-border-width: 0;
+    -fx-text-fill: #000;
+    -fx-text-color: #000;
+}
+
+#listHbox:hover, #listHbox:focus, #listHbox:focused {
+    -fx-text-fill: #000;
+    -fx-text-color: #000;
+    -fx-border-width: 0;
+}
