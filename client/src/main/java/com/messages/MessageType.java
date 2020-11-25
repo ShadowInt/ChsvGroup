@@ -1,4 +1,5 @@
 package com.messages;
 
-public class MessageType {
+public enum MessageType {
+    DISCONNECTED, CONNECTED, USER, VOICE
 }
