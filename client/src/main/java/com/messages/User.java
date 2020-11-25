@@ -1,4 +1,27 @@
 package com.messages;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    String name;
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    String picture;
 }
+
