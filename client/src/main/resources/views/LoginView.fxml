@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxWidth="380.0" minWidth="380.0" prefHeight="300.0" prefWidth="380.0" style="-fx-background-color: linear-gradient(to right, #4e54c8, #8f94fb);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.login.LoginController">
+    <right>
+        <GridPane prefHeight="250.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="103.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="210.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="103.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" />
+                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" valignment="CENTER" />
+                <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" />
+                <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" />
+            </rowConstraints>
+            <children>
+                <Button id="connectBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loginButtonAction" stylesheets="@../styles/Login.css" text="Подключиться" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <Label id="labelText1" stylesheets="@../styles/Login.css" text="Имя хоста: " textAlignment="CENTER" GridPane.rowIndex="3" />
+                <TextField fx:id="hostnameTextfield" prefWidth="188.0" stylesheets="@../styles/Login.css" text="localhost" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label id="labelText2" stylesheets="@../styles/Login.css" text="Порт: " GridPane.rowIndex="4" />
+                <TextField fx:id="portTextfield" prefHeight="13.0" prefWidth="149.0" stylesheets="@../styles/Login.css" text="9001" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <Label id="labelText3" stylesheets="@../styles/Login.css" text="Никнейм: " GridPane.rowIndex="1" />
+                <TextField fx:id="usernameTextfield" stylesheets="@../styles/Login.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label id="labelText4" prefHeight="20.0" prefWidth="150.0" stylesheets="@../styles/Login.css" text="Сведения о сервере" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </children>
+        </GridPane>
+    </right>
+    <bottom>
+        <Pane prefHeight="50.0" style="-fx-background-color: #373F50;" BorderPane.alignment="CENTER">
+            <children>
+                <Label id="labelInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" prefHeight="50.0" prefWidth="350.0" stylesheets="@../styles/Login.css" text="Чат для ЧСВ, здесь общаются: Сергей, Ирина, Михаил, Лейсан, Семён и боты. Просьба не мешать нам!" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+            </children>
+        </Pane>
+    </bottom>
+</BorderPane>
