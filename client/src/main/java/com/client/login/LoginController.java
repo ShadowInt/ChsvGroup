@@ -12,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
@@ -21,6 +23,8 @@ public class LoginController {
     @FXML private TextField usernameTextfield;
     public static ChatController chatController;
     private Scene scene;
+
+    Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     private static LoginController instance;
 
@@ -37,13 +41,17 @@ public class LoginController {
         String username = usernameTextfield.getText();
         String picture = "Default";
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/ChatView.fxml"));
-        Parent window = (Pane) fxmlLoader.load();
-        chatController = fxmlLoader.<ChatController>getController();
-        Listener listener = new Listener(hostname, port, username, picture, chatController);
-        Thread thread = new Thread(listener);
-        thread.start();
-        this.scene = new Scene(window);
+        if (username.length() <= 255){
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/ChatView.fxml"));
+            Parent window = (Pane) fxmlLoader.load();
+            chatController = fxmlLoader.<ChatController>getController();
+            Listener listener = new Listener(hostname, port, username, picture, chatController);
+            Thread thread = new Thread(listener);
+            thread.start();
+            this.scene = new Scene(window);
+        } else {
+            logger.error("Никнейм больше 255 символов");
+        }
     }
 
     public void showScene() throws IOException {
