@@ -42,13 +42,17 @@ public class LoginController {
         String picture = "Default";
 
         if (username.length() <= 255){
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/ChatView.fxml"));
-            Parent window = (Pane) fxmlLoader.load();
-            chatController = fxmlLoader.<ChatController>getController();
-            Listener listener = new Listener(hostname, port, username, picture, chatController);
-            Thread thread = new Thread(listener);
-            thread.start();
-            this.scene = new Scene(window);
+            if (username.matches("^[^\\d\\s]+$")){
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/ChatView.fxml"));
+                Parent window = (Pane) fxmlLoader.load();
+                chatController = fxmlLoader.<ChatController>getController();
+                Listener listener = new Listener(hostname, port, username, picture, chatController);
+                Thread thread = new Thread(listener);
+                thread.start();
+                this.scene = new Scene(window);
+            } else {
+                logger.error("Никнейм содержит пробелы или символы");
+            }
         } else {
             logger.error("Никнейм больше 255 символов");
         }
