@@ -12,8 +12,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
@@ -24,7 +25,7 @@ public class LoginController {
     public static ChatController chatController;
     private Scene scene;
 
-    Logger logger = LoggerFactory.getLogger(LoginController.class);
+    Logger logger = LogManager.getLogger(LoginController.class);
 
     private static LoginController instance;
 

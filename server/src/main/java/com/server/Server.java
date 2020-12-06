@@ -3,8 +3,9 @@ package com.server;
 import com.messages.Message;
 import com.messages.MessageType;
 import com.messages.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -20,7 +21,7 @@ public class Server {
     private static final HashMap<String, User> names = new HashMap<>();
     private static HashSet<ObjectOutputStream> writers = new HashSet<>();
     private static ArrayList<User> users = new ArrayList<>();
-    static Logger logger = LoggerFactory.getLogger(Server.class);
+    static Logger logger = LogManager.getLogger(Server.class);
 
     public static void main(String[] args) {
         logger.info("Сервер успешно запущен!");
@@ -38,7 +39,7 @@ public class Server {
     private static class Handler extends Thread {
         private String name;
         private Socket socket;
-        private Logger logger = LoggerFactory.getLogger(Handler.class);
+        private Logger logger = LogManager.getLogger(Handler.class);
         private User user;
         private ObjectInputStream objectInputStream;
         private OutputStream outputStream;

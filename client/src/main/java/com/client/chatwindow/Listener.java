@@ -3,8 +3,9 @@ package com.client.chatwindow;
 import com.client.login.LoginController;
 import com.messages.Message;
 import com.messages.MessageType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.net.Socket;
@@ -21,7 +22,7 @@ public class Listener implements Runnable{
     public ChatController controller;
     private static ObjectOutputStream objectOutputStream;
     private ObjectInputStream input;
-    Logger logger = LoggerFactory.getLogger(Listener.class);
+    Logger logger = LogManager.getLogger(Listener.class);
 
     public Listener(String host, int port, String nickname, String avatar, ChatController controller) {
         this.host = host;
