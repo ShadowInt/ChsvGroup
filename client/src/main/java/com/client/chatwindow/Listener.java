@@ -59,6 +59,9 @@ public class Listener implements Runnable{
                         case VOICE:
                             controller.addToChat(message);
                             break;
+                        case NOTIFICATION:
+                            controller.newUserNotification(message);
+                            break;
                         case CONNECTED:
                         case DISCONNECTED:
                             controller.setUserList(message);

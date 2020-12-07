@@ -8,6 +8,8 @@ import com.messages.Message;
 import com.messages.MessageType;
 import com.messages.bubble.BubbleSpec;
 import com.messages.bubble.BubbledLabel;
+import com.traynotifications.animations.AnimationType;
+import com.traynotifications.notification.TrayNotification;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -22,12 +24,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import javafx.scene.media.MediaPlayer;
 
 public class ChatController implements Initializable {
 
@@ -157,6 +162,27 @@ public class ChatController implements Initializable {
     public void setUserList(Message msg) {
         Platform.runLater(() -> {
             setOnlineLabel(String.valueOf(msg.getUserlist().size()));
+        });
+    }
+
+    public void newUserNotification(Message msg) {
+        Platform.runLater(() -> {
+            Image profileImg = new Image(getClass().getClassLoader().getResource("images/" + msg.getPicture().toLowerCase() +".png").toString(),50,50,false,false);
+            TrayNotification trayNotification = new TrayNotification();
+            trayNotification.setTitle("Присоединился новый пользователь!");
+            trayNotification.setMessage(msg.getName() + " присоединился к ЧСВ-чату!");
+            trayNotification.setRectangleFill(Paint.valueOf("#2C3E50"));
+            trayNotification.setAnimationType(AnimationType.POPUP);
+            trayNotification.setImage(profileImg);
+            trayNotification.showAndDismiss(Duration.seconds(5));
+            try {
+                javafx.scene.media.Media media = new Media(getClass().getClassLoader().getResource("sounds/notification.wav").toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(media);
+                mediaPlayer.play();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         });
     }
 
