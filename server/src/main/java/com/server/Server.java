@@ -1,5 +1,6 @@
 package com.server;
 
+import com.exception.DuplicateUsernameException;
 import com.messages.Message;
 import com.messages.MessageType;
 import com.messages.User;
@@ -88,7 +89,7 @@ public class Server {
             }
         }
 
-        private synchronized void checkUsername(Message firstMessage) {
+        private synchronized void checkUsername(Message firstMessage) throws DuplicateUsernameException {
             logger.info(firstMessage.getName() + " пытается подключиться");
             if (!names.containsKey(firstMessage.getName())) {
                 this.name = firstMessage.getName();
@@ -100,6 +101,9 @@ public class Server {
                 names.put(name, user);
 
                 logger.info(name + " добавлен в список");
+            } else {
+                logger.error(firstMessage.getName() + " уже подключен");
+                throw new DuplicateUsernameException(firstMessage.getName() + " уже подключен");
             }
         }
 
