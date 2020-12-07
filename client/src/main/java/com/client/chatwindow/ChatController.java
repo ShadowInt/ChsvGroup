@@ -24,11 +24,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.util.Duration;
 
-import javax.print.attribute.standard.Media;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -176,7 +176,7 @@ public class ChatController implements Initializable {
             trayNotification.setImage(profileImg);
             trayNotification.showAndDismiss(Duration.seconds(5));
             try {
-                Media media = new Media(getClass().getClassLoader().getResource("sounds/notification.wav").toString());
+                javafx.scene.media.Media media = new Media(getClass().getClassLoader().getResource("sounds/notification.wav").toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(media);
                 mediaPlayer.play();
             } catch (Exception e) {

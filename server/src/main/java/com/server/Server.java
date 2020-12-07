@@ -61,7 +61,7 @@ public class Server {
                 Message firstMessage = (Message) objectInputStream.readObject();
                 checkUsername(firstMessage);
                 writers.add(output);
-//                sendNotification(firstMessage);
+                sendNotification(firstMessage);
                 addToList();
 
                 while (socket.isConnected()) {
@@ -103,15 +103,15 @@ public class Server {
             }
         }
 
-//        private Message sendNotification(Message firstMessage) throws IOException {
-//            Message msg = new Message();
-//            msg.setMsg("присоединился к чату.");
-//            msg.setType(MessageType.NOTIFICATION);
-//            msg.setName(firstMessage.getName());
-//            msg.setPicture(firstMessage.getPicture());
-//            write(msg);
-//            return msg;
-//        }
+        private Message sendNotification(Message firstMessage) throws IOException {
+            Message msg = new Message();
+            msg.setMsg("присоединился к чату.");
+            msg.setType(MessageType.NOTIFICATION);
+            msg.setName(firstMessage.getName());
+            msg.setPicture(firstMessage.getPicture());
+            write(msg);
+            return msg;
+        }
 
 
         private Message removeFromList() throws IOException {
