@@ -1,6 +1,7 @@
 package com.client.chatwindow;
 
 
+import com.client.bot.SimpleBot;
 import com.client.util.VoicePlayback;
 import com.client.util.VoiceRecorder;
 import com.client.util.VoiceUtil;
@@ -32,28 +33,73 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javafx.scene.media.MediaPlayer;
+
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyledDocument;
 
 public class ChatController implements Initializable {
 
     public ScrollPane scrollPane;
     @FXML private TextArea messageBox;
     @FXML private Label nicknameLabel;
-    @FXML private Label userCountLabel;
+    @FXML public Label userCountLabel;
     @FXML private ImageView userAvatarIcon;
     @FXML ListView chatPane;
     @FXML BorderPane borderPane;
     @FXML ImageView microphoneIcon;
 
+    Boolean ai = false;
+    SimpleBot sbot = new SimpleBot();
+
     Image micActiveIcon = new Image(getClass().getClassLoader().getResource("images/microphone-active.png").toString());
     Image micInactiveIcon = new Image(getClass().getClassLoader().getResource("images/microphone.png").toString());
 
+    /**
+     *  Метод sendButtonAction() создал Лапушкин Михаил
+     */
+
     public void sendButtonAction() throws IOException {
-        String msg = messageBox.getText();
-        if (!messageBox.getText().isEmpty()) {
-            Listener.send(msg);
+        String msg = messageBox.getText().trim();
+        if (!test(messageBox.getText().trim())){
+            if (test1(messageBox.getText().trim()) && ai){
+                Listener.send(msg);
+                Listener.botAnswer(sbot.sayInReturn(msg, ai));
+                messageBox.clear();
+            } else {
+                if (!messageBox.getText().isEmpty()) {
+                    Listener.send(msg);
+                    messageBox.clear();
+                }
+            }
+        } else {
+            Listener.botHiMessage();
             messageBox.clear();
+            ai = true;
         }
+    }
+
+    /**
+     *  Метод test() создал Лапушкин Михаил
+     */
+
+    public static boolean test(String testString){
+        Pattern p = Pattern.compile("^/бот дэб$");
+        Matcher m = p.matcher(testString);
+        return m.matches();
+    }
+
+    /**
+     *  Метод test1() создал Лапушкин Михаил
+     */
+
+    public static boolean test1(String testString){
+        Pattern p = Pattern.compile(".*?\\bдэб\\b.*?");
+        Matcher m = p.matcher(testString);
+        return m.matches();
     }
 
     public void recordVoiceMessage() throws IOException {
@@ -155,9 +201,7 @@ public class ChatController implements Initializable {
         this.userAvatarIcon.setImage(new Image(getClass().getClassLoader().getResource("images/default.png").toString()));
     }
 
-    public void setOnlineLabel(String usercount) {
-        Platform.runLater(() -> userCountLabel.setText(usercount));
-    }
+    public void setOnlineLabel(String usercount) { Platform.runLater(() -> userCountLabel.setText(usercount)); }
 
     public void setUserList(Message msg) {
         Platform.runLater(() -> {

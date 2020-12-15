@@ -71,6 +71,7 @@ public class Server {
                         logger.info(inputmsg.getType() + " - " + inputmsg.getName() + ": " + inputmsg.getMsg());
                         switch (inputmsg.getType()) {
                             case USER:
+                            case BOT:
                             case VOICE:
                                 write(inputmsg);
                                 break;
