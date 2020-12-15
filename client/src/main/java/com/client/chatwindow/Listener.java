@@ -56,6 +56,7 @@ public class Listener implements Runnable{
                     logger.debug("Сообщение получено:" + message.getMsg() + " Тип сообщения:" + message.getType() + "Имя:" + message.getName());
                     switch (message.getType()) {
                         case USER:
+                        case BOT:
                         case VOICE:
                             controller.addToChat(message);
                             break;
@@ -110,6 +111,27 @@ public class Listener implements Runnable{
         message.setPicture(avatar);
         objectOutputStream.writeObject(message);
     }
+
+    public static void botHiMessage() throws IOException {
+        Message message = new Message();
+        message.setName("Бот Дэб");
+        message.setType(MessageType.BOT);
+        message.setMsg("Привет, я Бот Дэб. Чем могу тебе помочь?");
+        message.setPicture(avatar);
+        objectOutputStream.writeObject(message);
+        objectOutputStream.flush();
+    }
+
+    public static void botAnswer(String msg) throws IOException {
+        Message message = new Message();
+        message.setName("Бот Дэб");
+        message.setType(MessageType.BOT);
+        message.setMsg(msg);
+        message.setPicture(avatar);
+        objectOutputStream.writeObject(message);
+        objectOutputStream.flush();
+    }
+
 
 }
 
